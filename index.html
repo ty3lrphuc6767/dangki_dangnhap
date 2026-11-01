@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supabase Authentication Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="auth-card" aria-label="Đăng nhập và đăng ký Supabase">
+        <div class="intro">
+          <p class="eyebrow">CHECKPOINT 1</p>
+          <h1>Chào mừng trở lại.</h1>
+          <p>Đăng nhập hoặc tạo tài khoản mới với Supabase Authentication.</p>
+          <div class="secure-note"><span aria-hidden="true">✦</span>Mật khẩu do Supabase Authentication quản lý, ứng dụng không lưu mật khẩu.</div>
+        </div>
+
+        <div id="authArea" class="forms-grid">
+          <form id="loginForm" class="auth-form" novalidate>
+            <h2>Login</h2>
+            <p class="form-subtitle">Đăng nhập vào tài khoản của bạn</p>
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" autocomplete="email" placeholder="name@example.com" required />
+            <label for="loginPassword">Password</label>
+            <div class="password-wrap">
+              <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" required />
+              <button class="toggle-password" type="button" data-target="loginPassword" aria-label="Hiện mật khẩu">◉</button>
+            </div>
+            <button id="loginButton" class="primary-button" type="submit">Login</button>
+            <div class="divider"><span>hoặc</span></div>
+            <button id="googleLoginButton" class="google-button" type="button"><span class="google-mark">G</span>Login with Google</button>
+          </form>
+
+          <form id="signupForm" class="auth-form signup-form" novalidate>
+            <h2>Sign Up</h2>
+            <p class="form-subtitle">Tạo tài khoản mới trong vài giây</p>
+            <label for="signupEmail">Email</label>
+            <input id="signupEmail" type="email" autocomplete="email" placeholder="name@example.com" required />
+            <label for="signupPassword">Create password</label>
+            <div class="password-wrap">
+              <input id="signupPassword" type="password" autocomplete="new-password" placeholder="Tạo mật khẩu" required />
+              <button class="toggle-password" type="button" data-target="signupPassword" aria-label="Hiện mật khẩu">◉</button>
+            </div>
+            <label for="confirmPassword">Confirm password</label>
+            <div class="password-wrap">
+              <input id="confirmPassword" type="password" autocomplete="new-password" placeholder="Nhập lại mật khẩu" required />
+              <button class="toggle-password" type="button" data-target="confirmPassword" aria-label="Hiện mật khẩu">◉</button>
+            </div>
+            <p class="password-rule">Tối thiểu 6 ký tự, có chữ hoa, chữ thường và số.</p>
+            <button id="signupButton" class="primary-button" type="submit">Sign Up</button>
+            <div class="divider"><span>hoặc</span></div>
+            <button id="googleSignupButton" class="google-button" type="button"><span class="google-mark">G</span>Sign up with Google</button>
+          </form>
+        </div>
+
+        <section id="userPanel" class="user-panel hidden" aria-live="polite">
+          <div class="user-icon" aria-hidden="true">✓</div>
+          <p class="eyebrow">ĐĂNG NHẬP THÀNH CÔNG</p>
+          <h2>Xin chào, <span id="userEmail">user@email.com</span></h2>
+          <p>Tài khoản của bạn đang được Supabase Authentication xác thực.</p>
+          <button id="logoutButton" class="primary-button logout-button" type="button">Logout</button>
+        </section>
+
+        <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <!-- Supabase JavaScript SDK được nạp bằng thẻ script theo yêu cầu đề bài. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
